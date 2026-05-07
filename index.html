@@ -126,6 +126,12 @@
             box-shadow: 0 2px 8px rgba(229, 128, 26, 0.35);
         }
 
+        .input-unit-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 12px;
+        }
+
         h1 {
             color: var(--brand-dark);
             text-align: center;
@@ -296,6 +302,10 @@
         [dir="rtl"] td {
             text-align: right;
         }
+
+        [dir="rtl"] .input-unit-row {
+            justify-content: flex-start;
+        }
     </style>
 </head>
 <body>
@@ -309,28 +319,30 @@
                 </div>
             </div>
             <div class="top-actions">
-                <div id="unitSwitch" class="unit-switch" role="group" aria-label="Units">
-                    <button id="unitCmBtn" type="button">CM</button>
-                    <button id="unitMmBtn" type="button">MM</button>
-                </div>
                 <button id="langToggleBtn" class="btn-secondary" type="button">العربية</button>
             </div>
         </div>
         <h1 id="appTitle">Carton Box Finder</h1>
 
         <section class="card">
+            <div class="input-unit-row">
+                <div id="unitSwitch" class="unit-switch" role="group" aria-label="Units">
+                    <button id="unitCmBtn" type="button">CM</button>
+                    <button id="unitMmBtn" type="button">MM</button>
+                </div>
+            </div>
             <div class="grid">
                 <div class="field">
                     <label id="lengthLabel" for="length">Length (mm)</label>
-                    <input id="length" type="number" min="0.1" step="0.1" placeholder="e.g. 500">
+                    <input id="length" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 500">
                 </div>
                 <div class="field">
                     <label id="widthLabel" for="width">Width (mm)</label>
-                    <input id="width" type="number" min="0.1" step="0.1" placeholder="e.g. 400">
+                    <input id="width" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 400">
                 </div>
                 <div class="field">
                     <label id="heightLabel" for="height">Height (mm)</label>
-                    <input id="height" type="number" min="0.1" step="0.1" placeholder="e.g. 300">
+                    <input id="height" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 300">
                 </div>
             </div>
 
