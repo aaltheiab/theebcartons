@@ -5,18 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carton Box Finder</title>
     <style>
+        @font-face {
+            font-family: "CoconCustom";
+            src: url("./fonts/cocon-light.woff2") format("woff2"),
+                 url("./fonts/cocon-light.woff") format("woff");
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "CoconCustom";
+            src: url("./fonts/cocon-bold.woff2") format("woff2"),
+                 url("./fonts/cocon-bold.woff") format("woff");
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --brand-dark: #5d3a1a;
+            --brand-accent: #e5801a;
+            --brand-bg: #f9ece4;
+            --brand-ink: #3f3a43;
+            --brand-card: #fffcfa;
+            --brand-border: #eadfd6;
+        }
+
         body {
-            font-family: "Suisse Intl", -apple-system, Helvetica, Arial, sans-serif;
-            background: #f9ece4;
+            font-family: "CoconCustom", "Cocon Next Arabic", "Cocon", "Cocon LT Std", "Avenir Next Arabic", "Segoe UI", Arial, sans-serif;
+            background: var(--brand-bg);
             min-height: 100vh;
             padding: 20px;
-            color: #334155;
+            color: var(--brand-dark);
         }
 
         .container {
@@ -55,13 +82,13 @@
         .brand-text strong {
             display: block;
             font-size: 1rem;
-            color: #1e293b;
+            color: var(--brand-dark);
         }
 
         .brand-text span {
             display: block;
             font-size: 0.86rem;
-            color: #64748b;
+            color: var(--brand-ink);
         }
 
         .top-actions {
@@ -70,19 +97,48 @@
             flex-wrap: wrap;
         }
 
+        .unit-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px;
+            border-radius: 999px;
+            border: 1px solid #dbcbbb;
+            background: #f3ebe4;
+        }
+
+        .unit-switch button {
+            min-width: 56px;
+            padding: 7px 14px;
+            border: none;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--brand-dark);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .unit-switch button.active {
+            background: var(--brand-accent);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(229, 128, 26, 0.35);
+        }
+
         h1 {
-            color: #1e293b;
+            color: var(--brand-dark);
             text-align: center;
             margin-bottom: 16px;
             font-size: 2.1rem;
         }
 
         .card {
-            background: #fff;
+            background: var(--brand-card);
             border-radius: 14px;
             padding: 24px;
-            box-shadow: 0 8px 20px rgba(51, 65, 85, 0.08);
-            border: 1px solid #f0dccc;
+            box-shadow: 0 10px 24px rgba(93, 58, 26, 0.08);
+            border: 1px solid var(--brand-border);
             margin-bottom: 20px;
         }
 
@@ -107,7 +163,7 @@
         .field label {
             display: block;
             margin-bottom: 6px;
-            color: #444;
+            color: var(--brand-dark);
             font-weight: 600;
         }
 
@@ -115,13 +171,15 @@
             width: 100%;
             padding: 10px 12px;
             border-radius: 8px;
-            border: 2px solid #dfdfdf;
+            border: 2px solid #e6d8cc;
             font-size: 15px;
+            color: var(--brand-dark);
+            background: #fff;
         }
 
         .field input:focus {
             outline: none;
-            border-color: #e5801a;
+            border-color: var(--brand-accent);
         }
 
         .actions {
@@ -141,7 +199,7 @@
         }
 
         .btn-primary {
-            background: #e5801a;
+            background: var(--brand-accent);
             color: #fff;
         }
 
@@ -152,8 +210,8 @@
 
         .btn-secondary {
             background: #fff;
-            color: #334155;
-            border: 1px solid #e3d0c1;
+            color: var(--brand-dark);
+            border: 1px solid #ddcdbf;
         }
 
         .table-wrap {
@@ -168,13 +226,13 @@
         th, td {
             text-align: left;
             padding: 10px 12px;
-            border-bottom: 1px solid #ececec;
+            border-bottom: 1px solid #efe5dd;
             white-space: nowrap;
         }
 
         th {
-            background: #fff7ef;
-            color: #334155;
+            background: #f4ece5;
+            color: var(--brand-dark);
         }
 
         .hint {
@@ -187,10 +245,10 @@
             margin: 0;
             padding: 9px 12px;
             border-radius: 8px;
-            background: #fff7ef;
-            color: #764c2c;
+            background: #f4ece5;
+            color: var(--brand-dark);
             font-weight: 700;
-            border: 1px solid #f1dccd;
+            border: 1px solid #e2d2c5;
         }
 
         .pagination {
@@ -203,17 +261,17 @@
 
         .pagination button {
             background: #fff;
-            color: #334155;
-            border: 1px solid #e3d0c1;
+            color: var(--brand-dark);
+            border: 1px solid #ddcdbf;
             padding: 6px 10px;
             border-radius: 6px;
             font-size: 14px;
         }
 
         .pagination button.active {
-            background: #e5801a;
+            background: var(--brand-accent);
             color: #fff;
-            border-color: #e5801a;
+            border-color: var(--brand-accent);
         }
 
         .pagination button:disabled {
@@ -222,9 +280,13 @@
         }
 
         .pagination-info {
-            color: #64748b;
+            color: #756a60;
             font-size: 0.9rem;
             margin-inline-start: 4px;
+        }
+
+        .similarity-col {
+            display: none;
         }
 
         [dir="rtl"] .field label,
@@ -240,13 +302,17 @@
     <div class="container">
         <div class="top-bar">
             <div class="brand">
-                <img id="brandLogo" src="./theeb-logo.svg" alt="Theeb Cartons Logo" loading="eager" decoding="async">
+                <img id="brandLogo" src="./img/theeb-logo.svg" alt="Theeb Cartons Logo" loading="eager" decoding="async">
                 <div class="brand-text">
                     <strong id="brandTitleAr">الذييب للكرتون</strong>
                     <span id="brandTitleEn">Theeb Cartons</span>
                 </div>
             </div>
             <div class="top-actions">
+                <div id="unitSwitch" class="unit-switch" role="group" aria-label="Units">
+                    <button id="unitCmBtn" type="button">CM</button>
+                    <button id="unitMmBtn" type="button">MM</button>
+                </div>
                 <button id="langToggleBtn" class="btn-secondary" type="button">العربية</button>
             </div>
         </div>
@@ -275,7 +341,7 @@
         </section>
 
         <section class="card">
-            <h2 id="matchesTitle">Top 5 Matches</h2>
+            <h2 id="matchesTitle">Top 10 Matches</h2>
             <div id="results">No search yet.</div>
         </section>
 
@@ -431,13 +497,19 @@
         let boxes = [];
         let lastMatches = [];
         let currentLang = "ar";
+        let currentUnit = "cm";
         let allBoxesPage = 1;
         const ROWS_PER_PAGE = 20;
+        const RESULTS_LIMIT = 10;
+        const MM_PER_CM = 10;
 
         const resultsEl = document.getElementById("results");
         const allBoxesEl = document.getElementById("allBoxes");
         const searchBtn = document.getElementById("searchBtn");
         const langToggleBtn = document.getElementById("langToggleBtn");
+        const unitSwitchEl = document.getElementById("unitSwitch");
+        const unitCmBtn = document.getElementById("unitCmBtn");
+        const unitMmBtn = document.getElementById("unitMmBtn");
         const totalBoxesCountEl = document.getElementById("totalBoxesCount");
         const appTitleEl = document.getElementById("appTitle");
         const heightLabelEl = document.getElementById("heightLabel");
@@ -454,14 +526,12 @@
                 docTitle: "Carton Box Finder",
                 appTitle: "Carton Box Finder",
                 toggleButton: "العربية",
-                height: "Height (mm)",
-                width: "Width (mm)",
-                length: "Length (mm)",
-                placeholderHeight: "e.g. 300",
-                placeholderWidth: "e.g. 400",
-                placeholderLength: "e.g. 500",
+                height: "Height",
+                width: "Width",
+                length: "Length",
+                placeholderTemplate: "e.g. {value}",
                 searchButton: "Search Best Matches",
-                topMatches: "Top 5 Matches",
+                topMatches: "Top 10 Matches",
                 allBoxes: "All Available Boxes",
                 loading: "Loading...",
                 noSearch: "No search yet.",
@@ -469,14 +539,17 @@
                 noMatches: "No matches found.",
                 rank: "Rank",
                 id: "ID",
-                thHeight: "Height (mm)",
-                thWidth: "Width (mm)",
-                thLength: "Length (mm)",
+                thHeight: "Height",
+                thWidth: "Width",
+                thLength: "Length",
                 matchScore: "Match Score",
                 resultsHint: "Lower match score means a better fit. Box orientation is ignored.",
                 invalidInput: "Enter valid positive numbers for height, width, and length.",
                 noBoxesLoaded: "No boxes loaded. Please check embedded data.",
                 totalBoxesLabel: "Total boxes",
+                unitCm: "cm",
+                unitMm: "mm",
+                unitSelector: "Units",
                 prev: "Prev",
                 next: "Next",
                 pageInfo: "Page {page} of {total}"
@@ -485,14 +558,12 @@
                 docTitle: "البحث عن الكراتين",
                 appTitle: "البحث عن أفضل كرتون",
                 toggleButton: "English",
-                height: "الارتفاع (مم)",
-                width: "العرض (مم)",
-                length: "الطول (مم)",
-                placeholderHeight: "مثال: 300",
-                placeholderWidth: "مثال: 400",
-                placeholderLength: "مثال: 500",
+                height: "الارتفاع",
+                width: "العرض",
+                length: "الطول",
+                placeholderTemplate: "مثال: {value}",
                 searchButton: "ابحث عن أفضل التطابقات",
-                topMatches: "أفضل 5 تطابقات",
+                topMatches: "أفضل 10 تطابقات",
                 allBoxes: "جميع الكراتين المتاحة",
                 loading: "جارٍ التحميل...",
                 noSearch: "لم يتم إجراء بحث بعد.",
@@ -500,14 +571,17 @@
                 noMatches: "لا توجد نتائج مطابقة.",
                 rank: "الترتيب",
                 id: "رقم الكرتون",
-                thHeight: "الارتفاع (مم)",
-                thWidth: "العرض (مم)",
-                thLength: "الطول (مم)",
+                thHeight: "الارتفاع",
+                thWidth: "العرض",
+                thLength: "الطول",
                 matchScore: "درجة التطابق",
                 resultsHint: "كلما انخفضت درجة التطابق كان القياس أفضل. لا يهم اتجاه الكرتون.",
                 invalidInput: "أدخل أرقامًا موجبة وصحيحة للارتفاع والعرض والطول.",
                 noBoxesLoaded: "لم يتم تحميل أي كراتين. يرجى التحقق من البيانات المضمنة.",
                 totalBoxesLabel: "إجمالي الكراتين",
+                unitCm: "سم",
+                unitMm: "مم",
+                unitSelector: "الوحدات",
                 prev: "السابق",
                 next: "التالي",
                 pageInfo: "صفحة {page} من {total}"
@@ -522,19 +596,58 @@
             totalBoxesCountEl.textContent = `${t("totalBoxesLabel")}: ${boxes.length}`;
         }
 
+        function unitLabel() {
+            return currentUnit === "cm" ? t("unitCm") : t("unitMm");
+        }
+
+        function toggleUnitLabel(unit) {
+            if (currentLang === "ar") return unit === "cm" ? t("unitCm") : t("unitMm");
+            return unit.toUpperCase();
+        }
+
+        function dimensionLabel(key) {
+            return `${t(key)} (${unitLabel()})`;
+        }
+
+        function fromMm(valueMm) {
+            return currentUnit === "cm" ? valueMm / MM_PER_CM : valueMm;
+        }
+
+        function toMm(valueInCurrentUnit) {
+            return currentUnit === "cm" ? valueInCurrentUnit * MM_PER_CM : valueInCurrentUnit;
+        }
+
+        function formatSize(valueMm) {
+            const converted = fromMm(valueMm);
+            return currentUnit === "cm"
+                ? converted.toFixed(1).replace(/\.0$/, "")
+                : String(Math.round(converted));
+        }
+
+        function formatPlaceholderValue(valueMm) {
+            return formatSize(valueMm);
+        }
+
         function applyLanguage(rerender = true) {
             const isArabic = currentLang === "ar";
             document.documentElement.lang = currentLang;
             document.documentElement.dir = isArabic ? "rtl" : "ltr";
             document.title = t("docTitle");
             langToggleBtn.textContent = t("toggleButton");
+            unitSwitchEl.setAttribute("aria-label", t("unitSelector"));
+            unitCmBtn.textContent = toggleUnitLabel("cm");
+            unitMmBtn.textContent = toggleUnitLabel("mm");
+            unitCmBtn.classList.toggle("active", currentUnit === "cm");
+            unitMmBtn.classList.toggle("active", currentUnit === "mm");
+            unitCmBtn.setAttribute("aria-pressed", currentUnit === "cm" ? "true" : "false");
+            unitMmBtn.setAttribute("aria-pressed", currentUnit === "mm" ? "true" : "false");
             appTitleEl.textContent = t("appTitle");
-            heightLabelEl.textContent = t("height");
-            widthLabelEl.textContent = t("width");
-            lengthLabelEl.textContent = t("length");
-            heightInputEl.placeholder = t("placeholderHeight");
-            widthInputEl.placeholder = t("placeholderWidth");
-            lengthInputEl.placeholder = t("placeholderLength");
+            heightLabelEl.textContent = dimensionLabel("height");
+            widthLabelEl.textContent = dimensionLabel("width");
+            lengthLabelEl.textContent = dimensionLabel("length");
+            heightInputEl.placeholder = t("placeholderTemplate").replace("{value}", formatPlaceholderValue(300));
+            widthInputEl.placeholder = t("placeholderTemplate").replace("{value}", formatPlaceholderValue(400));
+            lengthInputEl.placeholder = t("placeholderTemplate").replace("{value}", formatPlaceholderValue(500));
             searchBtn.textContent = t("searchButton");
             matchesTitleEl.textContent = t("topMatches");
             allBoxesTitleEl.textContent = t("allBoxes");
@@ -587,18 +700,18 @@
                         <thead>
                             <tr>
                                 <th>${t("id")}</th>
-                                <th>${t("thLength")}</th>
-                                <th>${t("thWidth")}</th>
-                                <th>${t("thHeight")}</th>
+                                <th>${dimensionLabel("thLength")}</th>
+                                <th>${dimensionLabel("thWidth")}</th>
+                                <th>${dimensionLabel("thHeight")}</th>
                             </tr>
                         </thead>
                         <tbody>
                             ${pageRows.map((box) => `
                                 <tr>
                                     <td>${box.id}</td>
-                                    <td>${box.length}</td>
-                                    <td>${box.width}</td>
-                                    <td>${box.height}</td>
+                                    <td>${formatSize(box.length)}</td>
+                                    <td>${formatSize(box.width)}</td>
+                                    <td>${formatSize(box.height)}</td>
                                 </tr>
                             `).join("")}
                         </tbody>
@@ -626,10 +739,10 @@
                             <tr>
                                 <th>${t("rank")}</th>
                                 <th>${t("id")}</th>
-                                <th>${t("thLength")}</th>
-                                <th>${t("thWidth")}</th>
-                                <th>${t("thHeight")}</th>
-                                <th>${t("matchScore")}</th>
+                                <th>${dimensionLabel("thLength")}</th>
+                                <th>${dimensionLabel("thWidth")}</th>
+                                <th>${dimensionLabel("thHeight")}</th>
+                                <th class="similarity-col">${t("matchScore")}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -637,10 +750,10 @@
                                 <tr>
                                     <td>#${index + 1}</td>
                                     <td>${box.id}</td>
-                                    <td>${box.length}</td>
-                                    <td>${box.width}</td>
-                                    <td>${box.height}</td>
-                                    <td>${box.match_score.toFixed(2)}</td>
+                                    <td>${formatSize(box.length)}</td>
+                                    <td>${formatSize(box.width)}</td>
+                                    <td>${formatSize(box.height)}</td>
+                                    <td class="similarity-col">${box.match_score.toFixed(2)}</td>
                                 </tr>
                             `).join("")}
                         </tbody>
@@ -679,14 +792,27 @@
                 return;
             }
 
-            const target = [h, w, l];
+            const target = [toMm(h), toMm(w), toMm(l)];
             const matches = boxes
                 .map((box) => ({ ...box, match_score: calculateMatchScore(box, target) }))
                 .sort((a, b) => a.match_score - b.match_score)
-                .slice(0, 5);
+                .slice(0, RESULTS_LIMIT);
 
             lastMatches = matches;
             renderResults(matches);
+        }
+
+        async function verifyBrandFontLoaded() {
+            if (!("fonts" in document)) return;
+            try {
+                await document.fonts.ready;
+                const loaded = document.fonts.check('400 16px "CoconCustom"');
+                if (!loaded) {
+                    console.warn('Brand font "CoconCustom" is not loaded. Check that font files exist in ./fonts/');
+                }
+            } catch (error) {
+                console.warn("Unable to verify custom font loading.", error);
+            }
         }
 
         searchBtn.addEventListener("click", search);
@@ -702,11 +828,22 @@
             currentLang = currentLang === "en" ? "ar" : "en";
             applyLanguage();
         });
+        unitCmBtn.addEventListener("click", () => {
+            if (currentUnit === "cm") return;
+            currentUnit = "cm";
+            applyLanguage();
+        });
+        unitMmBtn.addEventListener("click", () => {
+            if (currentUnit === "mm") return;
+            currentUnit = "mm";
+            applyLanguage();
+        });
         document.addEventListener("keydown", (event) => {
             if (event.key === "Enter") search();
         });
 
         applyLanguage(false);
+        verifyBrandFontLoaded();
         loadData();
     </script>
 </body>
