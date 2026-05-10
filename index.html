@@ -295,6 +295,132 @@
             display: none;
         }
 
+        .colors-cell {
+            min-width: 82px;
+        }
+
+        .color-dots {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+
+        .color-dot.brown {
+            background: #b86a2a;
+            border-color: #9f5b23;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.42) inset, 0 1px 2px rgba(0, 0, 0, 0.14);
+        }
+
+        .color-dot.white {
+            background: linear-gradient(145deg, #ffffff 0%, #f0f0f0 100%);
+            border: 1px solid #8e8e8e;
+            box-shadow: 0 0 0 1px #ffffff inset, 0 1px 2px rgba(0, 0, 0, 0.16);
+        }
+
+        .color-dot.black {
+            background: #1f1f1f;
+            border-color: #050505;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14) inset;
+        }
+
+        .color-dot.blue { background: #2b78c5; border-color: #1f5f9f; }
+        .color-dot.green { background: #3e8f3e; border-color: #2e6c2e; }
+        .color-dot.red { background: #c64646; border-color: #9e3535; }
+        .color-dot.pink { background: #d97cb0; border-color: #b75f8f; }
+        .color-dot.purple { background: #8662c7; border-color: #6d4ea6; }
+        .color-dot.yellow { background: #e2bb32; border-color: #be9b1f; }
+        .color-dot.gray { background: #8f98a2; border-color: #747d87; }
+
+        .id-cell {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .thick-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: #f4ece5;
+            border: 1px solid #cda67b;
+            color: #7b4b1f;
+        }
+
+        .info-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            background: #fff;
+            color: var(--brand-dark);
+            border: 1px solid #ccb39e;
+            cursor: help;
+            user-select: none;
+        }
+
+        .info-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .info-tooltip {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(2px);
+            min-width: 180px;
+            max-width: 280px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            background: #2f2a25;
+            color: #fff;
+            font-size: 0.78rem;
+            line-height: 1.35;
+            white-space: normal;
+            text-wrap: balance;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.12s ease, transform 0.12s ease, visibility 0.12s ease;
+            z-index: 20;
+        }
+
+        .info-wrap:hover .info-tooltip,
+        .info-wrap:focus-within .info-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        [dir="rtl"] .info-tooltip {
+            left: auto;
+            right: 0;
+            transform: translateY(2px);
+        }
+
+        [dir="rtl"] .info-wrap:hover .info-tooltip,
+        [dir="rtl"] .info-wrap:focus-within .info-tooltip {
+            transform: translateY(0);
+        }
+
         [dir="rtl"] .field label,
         [dir="rtl"] .status,
         [dir="rtl"] .hint,
@@ -365,146 +491,244 @@
 
     <script>
         const EMBEDDED_BOXES = [
-            [35, 208, 249, 308],
-            [1, 600, 530, 720],
-            [36, 152, 320, 648],
-            [37, 250, 360, 500],
-            [2, 600, 500, 500],
-            [38, 285, 285, 433],
-            [3, 470, 498, 498],
-            [39, 273, 275, 440],
-            [40, 558, 470, 548],
-            [4, 342, 307, 635],
-            [41, 236, 228, 339],
-            [5, 510, 330, 650],
-            [42, 328, 260, 345],
-            [6, 260, 440, 650],
-            [43, 232, 305, 460],
-            [7, 300, 400, 600],
-            [44, 340, 290, 400],
-            [8, 520, 330, 440],
-            [45, 192, 266, 355],
-            [9, 260, 415, 415],
-            [46, 290, 400, 480],
-            [10, 313, 333, 485],
-            [47, 125, 329, 375],
-            [11, 330, 360, 360],
-            [48, 250, 315, 315],
-            [49, 200, 350, 400],
-            [12, 200, 300, 430],
-            [50, 222, 273, 410],
-            [13, 210, 365, 365],
-            [51, 323, 259, 345],
-            [52, 280, 420, 449],
-            [14, 198, 270, 405],
-            [53, 272, 237, 373],
-            [15, 160, 315, 315],
-            [54, 220, 300, 420],
-            [16, 130, 235, 340],
-            [55, 90, 235, 325],
-            [17, 90, 250, 340],
-            [56, 600, 600, 1000],
-            [18, 214, 263, 440],
-            [57, 160, 310, 310],
-            [19, 162, 360, 360],
-            [58, 400, 600, 1000],
-            [20, 248, 272, 408],
-            [59, 320, 500, 660],
-            [21, 162, 315, 315],
-            [60, 318, 215, 303],
-            [22, 352, 238, 238],
-            [61, 160, 245, 360],
-            [23, 205, 280, 285],
-            [62, 270, 230, 375],
-            [24, 130, 235, 340],
-            [63, 260, 232, 252],
-            [25, 200, 320, 500],
-            [64, 140, 192, 365],
-            [65, 90, 250, 440],
-            [26, 254, 350, 500],
-            [66, 130, 290, 390],
-            [27, 322, 516, 516],
-            [67, 300, 400, 740],
-            [28, 250, 418, 640],
-            [68, 90, 250, 450],
-            [29, 340, 450, 470],
-            [69, 400, 250, 500],
-            [70, 200, 250, 500],
-            [30, 350, 360, 500],
-            [71, 353, 315, 394],
-            [31, 356, 310, 598],
-            [72, 347, 295, 600],
-            [32, 190, 180, 246],
-            [73, 612, 116, 765],
-            [33, 125, 285, 385],
-            [74, 101, 360, 500],
-            [34, 447, 333, 345],
-            [115, 298, 282, 378],
-            [75, 180, 238, 238],
-            [116, 200, 350, 500],
-            [76, 520, 705, 1005],
-            [117, 600, 600, 900],
-            [77, 150, 175, 210],
-            [118, 900, 600, 600],
-            [78, 113, 187, 220],
-            [119, 800, 800, 1200],
-            [79, 350, 620, 620],
-            [120, 606, 453, 453],
-            [80, 275, 240, 290],
-            [121, 218, 190, 940],
-            [81, 900, 600, 850],
-            [122, 580, 580, 580],
-            [82, 1000, 614, 800],
-            [123, 155, 288, 385],
-            [83, 790, 560, 650],
-            [124, 620, 480, 480],
-            [84, 410, 560, 1200],
-            [125, 280, 280, 450],
-            [85, 534, 523, 645],
-            [126, 370, 400, 550],
-            [86, 192, 235, 235],
-            [127, 145, 220, 330],
-            [87, 93, 260, 397],
-            [128, 225, 420, 495],
-            [88, 260, 310, 390],
-            [129, 283, 295, 409],
-            [89, 155, 160, 240],
-            [130, 200, 410, 410],
-            [90, 170, 178, 180],
-            [131, 240, 245, 345],
-            [91, 190, 265, 320],
-            [132, 500, 500, 750],
-            [92, 220, 300, 325],
-            [133, 340, 300, 595],
-            [93, 250, 250, 549],
-            [134, 180, 220, 300],
-            [94, 295, 205, 375],
-            [135, 184, 250, 570],
-            [95, 92, 400, 400],
-            [136, 223, 227, 387],
-            [96, 170, 200, 400],
-            [137, 110, 288, 306],
-            [97, 10, 220, 290],
-            [138, 93, 210, 285],
-            [98, 455, 330, 650],
-            [139, 197, 269, 398],
-            [99, 165, 241, 358],
-            [140, 500, 500, 500],
-            [100, 155, 235, 380],
-            [101, 500, 530, 780],
-            [102, 160, 220, 330],
-            [103, 173, 335, 477],
-            [104, 120, 210, 440],
-            [105, 102, 255, 608],
-            [106, 260, 225, 300],
-            [107, 210, 155, 200],
-            [108, 93, 290, 400],
-            [109, 215, 345, 790],
-            [110, 120, 250, 550],
-            [111, 172, 328, 448],
-            [112, 160, 230, 450],
-            [113, 479, 353, 818],
-            [114, 145, 335, 730],
+            [1, 720, 530, 600, "brown", "no", "regular carton box كرتون عادي"],
+            ["1 S", 720, 530, 600, "brown", "thick", "regular carton box كرتون عادي"],
+            [2, 500, 500, 600, "brown", "no", "regular carton box كرتون عادي"],
+            [3, 498, 498, 470, "brown", "no", "regular carton box كرتون عادي"],
+            [3, 498, 498, 470, "brown", "no", "regular carton box كرتون عادي"],
+            [4, 635, 307, 342, "brown", "no", "regular carton box كرتون عادي"],
+            [5, 650, 330, 510, "brown", "no", "regular carton box كرتون عادي"],
+            [6, 650, 440, 260, "brown", "no", "regular carton box كرتون عادي"],
+            [7, 600, 400, 300, "brown", "no", "regular carton box كرتون عادي"],
+            [8, 440, 330, 520, "brown", "no", "regular carton box كرتون عادي"],
+            [9, 415, 415, 260, "brown", "no", "regular carton box كرتون عادي"],
+            [10, 485, 333, 313, "brown", "no", "regular carton box كرتون عادي"],
+            [11, 360, 360, 330, "brown", "no", "regular carton box كرتون عادي"],
+            [12, 496, 335, 208, "brown", "no", "regular carton box كرتون عادي"],
+            [13, 365, 365, 210, "brown", "no", "regular carton box كرتون عادي"],
+            [14, 405, 270, 198, "brown", "no", "regular carton box كرتون عادي"],
+            [14, 405, 270, 198, "white", "no", "regular carton box كرتون عادي"],
+            [15, 315, 315, 160, "brown", "no", "regular carton box كرتون عادي"],
+            [16, 340, 235, 130, "brown", "no", "regular carton box كرتون عادي"],
+            [17, 340, 250, 90, "brown", "no", "regular carton box كرتون عادي"],
+            [18, 440, 263, 214, "white", "no", "regular carton box كرتون عادي"],
+            [19, 360, 360, 162, "brown", "no", "regular carton box كرتون عادي"],
+            [20, 408, 272, 248, "white", "no", "regular carton box كرتون عادي"],
+            [21, 315, 315, 162, "white", "no", "regular carton box كرتون عادي"],
+            [22, 238, 238, 352, "white", "no", "regular carton box كرتون عادي"],
+            [23, 285, 280, 205, "white", "no", "regular carton box كرتون عادي"],
+            [24, 340, 235, 130, "white", "no", "regular carton box كرتون عادي"],
+            [25, 500, 320, 200, "brown", "no", "regular carton box كرتون عادي"],
+            [26, 500, 350, 254, "brown", "no", "regular carton box كرتون عادي"],
+            [27, 516, 516, 322, "brown", "no", "regular carton box كرتون عادي"],
+            [28, 640, 418, 250, "brown", "no", "regular carton box كرتون عادي"],
+            [29, 470, 450, 340, "brown", "no", "regular carton box كرتون عادي"],
+            [30, 500, 360, 350, "brown", "no", "regular carton box كرتون عادي"],
+            ["30 S", 500, 360, 350, "brown", "thick", "regular carton box كرتون عادي"],
+            [31, 598, 310, 356, "brown", "no", "regular carton box كرتون عادي"],
+            [32, 246, 180, 190, "brown", "no", "regular carton box كرتون عادي"],
+            [33, 385, 285, 125, "white", "no", "regular carton box كرتون عادي"],
+            [34, 345, 333, 447, "white", "no", "regular carton box كرتون عادي"],
+            [35, 308, 249, 208, "white", "no", "regular carton box كرتون عادي"],
+            [36, 648, 320, 152, "brown", "no", "regular carton box كرتون عادي"],
+            [37, 500, 360, 249, "brown", "no", "regular carton box كرتون عادي"],
+            [38, 433, 285, 285, "brown", "no", "regular carton box كرتون عادي"],
+            [39, 440, 275, 273, "brown", "no", "regular carton box كرتون عادي"],
+            [40, 548, 470, 558, "brown", "no", "regular carton box كرتون عادي"],
+            [41, 339, 228, 236, "white", "no", "regular carton box كرتون عادي"],
+            [42, 345, 260, 328, "brown", "no", "regular carton box كرتون عادي"],
+            [43, 460, 305, 232, "brown", "no", "regular carton box كرتون عادي"],
+            [44, 400, 290, 340, "brown", "no", "regular carton box كرتون عادي"],
+            [45, 355, 266, 192, "brown", "no", "regular carton box كرتون عادي"],
+            [46, 480, 400, 290, "brown", "no", "regular carton box كرتون عادي"],
+            [47, 375, 329, 125, "white", "no", "regular carton box كرتون عادي"],
+            [48, 315, 315, 250, "brown", "no", "regular carton box كرتون عادي"],
+            [49, 400, 350, 200, "white", "no", "regular carton box كرتون عادي"],
+            [50, 410, 273, 222, "white", "no", "regular carton box كرتون عادي"],
+            [51, 345, 259, 323, "white", "no", "regular carton box كرتون عادي"],
+            [52, 449, 420, 280, "brown", "no", "regular carton box كرتون عادي"],
+            [53, 373, 237, 271, "brown", "no", "regular carton box كرتون عادي"],
+            [54, 420, 300, 220, "brown", "no", "regular carton box كرتون عادي"],
+            [55, 325, 235, 89, "white", "no", "regular carton box كرتون عادي"],
+            [56, 1000, 600, 600, "brown", "no", "regular carton box كرتون عادي"],
+            [57, 700, 700, 800, "brown", "no", "regular carton box كرتون عادي"],
+            [58, 1000, 600, 400, "brown", "no", "regular carton box كرتون عادي"],
+            [59, 660, 500, 320, "brown", "no", "regular carton box كرتون عادي"],
+            [60, 303, 215, 318, "brown", "no", "regular carton box كرتون عادي"],
+            [61, 360, 245, 160, "white", "no", "regular carton box كرتون عادي"],
+            [62, 375, 230, 270, "brown", "no", "regular carton box كرتون عادي"],
+            [63, 252, 232, 260, "brown", "no", "regular carton box كرتون عادي"],
+            [64, 365, 192, 140, "brown", "no", "regular carton box كرتون عادي"],
+            [65, 440, 250, 90, "brown", "no", "regular carton box كرتون عادي"],
+            [66, 200, 200, 200, "white", "no", "regular carton box كرتون عادي"],
+            [67, 740, 400, 300, "brown", "no", "regular carton box كرتون عادي"],
+            [68, 450, 250, 90, "brown", "no", "regular carton box كرتون عادي"],
+            [69, 500, 250, 400, "brown", "no", "regular carton box كرتون عادي"],
+            [70, 500, 250, 200, "brown", "no", "regular carton box كرتون عادي"],
+            [71, 394, 315, 353, "brown", "no", "regular carton box كرتون عادي"],
+            [72, 600, 295, 347, "brown", "no", "regular carton box كرتون عادي"],
+            [73, 765, 116, 612, "brown", "no", "regular carton box كرتون عادي"],
+            [74, 500, 360, 101, "white", "no", "regular carton box كرتون عادي"],
+            [75, 238, 238, 180, "white", "no", "regular carton box كرتون عادي"],
+            [76, 1005, 705, 520, "brown", "no", "regular carton box كرتون عادي"],
+            [77, 210, 175, 150, "white", "no", "regular carton box كرتون عادي"],
+            [78, 220, 187, 112, "white", "no", "regular carton box كرتون عادي"],
+            [79, 620, 620, 350, "brown", "no", "regular carton box كرتون عادي"],
+            [80, 290, 240, 275, "white", "no", "regular carton box كرتون عادي"],
+            [81, 850, 600, 900, "brown", "no", "regular carton box كرتون عادي"],
+            [82, 800, 614, 1000, "brown", "no", "regular carton box كرتون عادي"],
+            [83, 650, 560, 790, "brown", "no", "regular carton box كرتون عادي"],
+            [84, 1200, 550, 400, "brown", "no", "regular carton box كرتون عادي"],
+            [85, 645, 523, 534, "brown", "no", "regular carton box كرتون عادي"],
+            [86, 235, 235, 192, "white", "no", "regular carton box كرتون عادي"],
+            [87, 397, 260, 93, "white", "no", "regular carton box كرتون عادي"],
+            [89, 240, 160, 150, "brown", "no", "regular carton box كرتون عادي"],
+            [90, 180, 178, 170, "brown", "no", "regular carton box كرتون عادي"],
+            [91, 320, 265, 190, "brown", "no", "regular carton box كرتون عادي"],
+            [92, 325, 300, 220, "brown", "no", "regular carton box كرتون عادي"],
+            [93, 549, 250, 250, "brown", "no", "regular carton box كرتون عادي"],
+            [94, 375, 205, 295, "brown", "no", "regular carton box كرتون عادي"],
+            [95, 400, 400, 92, "brown", "no", "regular carton box كرتون عادي"],
+            [96, 500, 400, 300, "brown", "no", "regular carton box كرتون عادي"],
+            [97, 300, 300, 300, "brown", "no", "regular carton box كرتون عادي"],
+            [98, 650, 330, 455, "brown", "no", "regular carton box كرتون عادي"],
+            [101, 780, 530, 500, "brown", "no", "regular carton box كرتون عادي"],
+            [102, 330, 220, 160, "brown", "no", "regular carton box كرتون عادي"],
+            [103, 477, 335, 173, "brown", "no", "regular carton box كرتون عادي"],
+            [104, 440, 210, 120, "brown", "no", "regular carton box كرتون عادي"],
+            [105, 608, 255, 102, "brown", "no", "regular carton box كرتون عادي"],
+            [106, 300, 225, 260, "brown", "no", "regular carton box كرتون عادي"],
+            [107, 200, 150, 208, "brown", "no", "regular carton box كرتون عادي"],
+            [108, 400, 290, 93, "brown", "no", "regular carton box كرتون عادي"],
+            [109, 790, 340, 210, "brown", "no", "regular carton box كرتون عادي"],
+            [110, 550, 245, 114, "brown", "no", "regular carton box كرتون عادي"],
+            [111, 448, 328, 172, "brown", "no", "regular carton box كرتون عادي"],
+            [112, 450, 230, 157, "brown", "no", "regular carton box كرتون عادي"],
+            [113, 818, 353, 479, "brown", "no", "regular carton box كرتون عادي"],
+            [114, 730, 335, 145, "brown", "no", "regular carton box كرتون عادي"],
+            [115, 378, 282, 298, "brown", "no", "regular carton box كرتون عادي"],
+            [116, 500, 350, 200, "brown", "no", "regular carton box كرتون عادي"],
+            [117, 900, 600, 600, "brown", "no", "regular carton box كرتون عادي"],
+            [118, 600, 600, 900, "brown", "no", "regular carton box كرتون عادي"],
+            [119, 1200, 800, 800, "brown", "no", "regular carton box كرتون عادي"],
+            [120, 453, 453, 606, "brown", "no", "regular carton box كرتون عادي"],
+            [121, 940, 190, 218, "brown", "no", "regular carton box كرتون عادي"],
+            [122, 580, 580, 580, "brown", "no", "regular carton box كرتون عادي"],
+            [123, 385, 288, 155, "brown", "no", "regular carton box كرتون عادي"],
+            [124, 480, 480, 620, "brown", "no", "regular carton box كرتون عادي"],
+            [125, 450, 280, 280, "brown", "no", "regular carton box كرتون عادي"],
+            [126, 550, 400, 369, "brown", "no", "regular carton box كرتون عادي"],
+            [127, 330, 220, 145, "brown", "no", "regular carton box كرتون عادي"],
+            [128, 495, 420, 225, "brown", "no", "regular carton box كرتون عادي"],
+            [129, 408, 295, 283, "brown", "no", "regular carton box كرتون عادي"],
+            [130, 410, 410, 200, "brown", "no", "regular carton box كرتون عادي"],
+            [131, 345, 245, 240, "brown", "no", "regular carton box كرتون عادي"],
+            [132, 750, 500, 500, "brown", "no", "regular carton box كرتون عادي"],
+            [133, 600, 300, 340, "brown", "no", "regular carton box كرتون عادي"],
+            [134, 300, 220, 180, "brown", "no", "regular carton box كرتون عادي"],
+            [135, 570, 250, 184, "brown", "no", "regular carton box كرتون عادي"],
+            [136, 387, 227, 223, "brown", "no", "regular carton box كرتون عادي"],
+            [137, 306, 288, 110, "brown", "no", "regular carton box كرتون عادي"],
+            [138, 285, 210, 92, "brown", "no", "regular carton box كرتون عادي"],
+            [139, 398, 269, 197, "brown", "no", "regular carton box كرتون عادي"],
+            [140, 500, 500, 500, "brown", "no", "regular carton box كرتون عادي"],
+            [141, 250, 190, 220, "brown", "no", "regular carton box كرتون عادي"],
+            [142, 308, 249, 180, "brown", "no", "regular carton box كرتون عادي"],
+            [143, 415, 325, 162, "brown", "no", "regular carton box كرتون عادي"],
+            [144, 330, 230, 220, "brown", "no", "regular carton box كرتون عادي"],
+            [145, 515, 308, 267, "brown", "no", "regular carton box كرتون عادي"],
+            [146, 384, 306, 70, "brown", "no", "regular carton box كرتون عادي"],
+            [147, 309, 215, 208, "brown", "no", "regular carton box كرتون عادي"],
+            ["147 S", 309, 215, 208, "brown", "thick", "regular carton box كرتون عادي"],
+            [148, 385, 307, 250, "brown", "no", "regular carton box كرتون عادي"],
+            ["148 S", 387, 306, 250, "brown", "thick", "regular carton box كرتون عادي"],
+            [149, 490, 322, 204, "brown", "no", "regular carton box كرتون عادي"],
+            [150, 280, 280, 80, "brown", "no", "regular carton box كرتون عادي"],
+            [151, 376, 360, 306, "brown", "no", "regular carton box كرتون عادي"],
+            [152, 400, 400, 400, "brown", "no", "regular carton box كرتون عادي"],
+            [153, 308, 216, 210, "brown", "no", "regular carton box كرتون عادي"],
+            [154, 257, 118, 173, "brown", "no", "regular carton box كرتون عادي"],
+            [155, 250, 200, 150, "brown", "no", "regular carton box كرتون عادي"],
+            [156, 450, 300, 140, "brown", "no", "regular carton box كرتون عادي"],
+            ["A1", 140, 120, 80, "brown", "no", "كرتون (تركيب) بني (A1)"],
+            ["A2", 210, 125, 78, "brown", "no", "كرتون (تركيب) بني (A2)"],
+            ["A3", 240, 115, 70, "brown", "no", "كرتون (تركيب) بني (A3)"],
+            ["E1", 210, 125, 78, "brown", "no", "E1 كرتون مشمشي ( ايليت ELITE )"],
+            ["E2", 210, 125, 78, "blue", "no", "E2 كرتون تركواز ( ايليت ELITE )"],
+            ["D1", 145, 103, 55, "white", "no", "كرتون (تركيب) أبيض (D1)"],
+            ["D2", 177, 115, 70, "white", "no", "كرتون (تركيب) أبيض (D2) - سادة / مطبوع"],
+            ["D3", 167, 145, 70, "white", "no", "كرتون (تركيب) أبيض (D3)"],
+            ["D4", 200, 140, 70, "white", "no", "كرتون (تركيب) أبيض (D4)"],
+            ["D5", 220, 150, 95, "white", "no", "كرتون (تركيب) أبيض (D5) - سادة / مطبوع"],
+            ["D6", 252, 220, 85, "white", "no", "كرتون (تركيب) أبيض تلفون صغير (D6)"],
+            ["D7", 290, 220, 100, "white", "no", "كرتون (تركيب) أبيض تلفون وسط (D7)"],
+            ["D7", 290, 220, 100, "brown", "no", "كرتون (تركيب) بني تلفون وسط (D7)"],
+            ["D8", 285, 125, 90, "white", "no", "كرتون (تركيب) أبيض شوز صغير (D8)"],
+            ["D9", 315, 160, 110, "white", "no", "كرتون (تركيب) أبيض شوز كبير (D9)"],
+            ["D10", 205, 147, 105, "white", "no", "كرتون أبيض سعة 2ك (D10)"],
+            ["D11", 200, 185, 115, "white", "no", "كرتون أبيض سعة 2ك كبير (D11)"],
+            ["D12", 160, 150, 120, "brown", "no", "كرتون (تركيب) بني دينمو (D12)"],
+            ["D13", 350, 330, 94, "white", "no", "كرتون (تركيب) أبيض قرصان (D13)"],
+            ["D14", 290, 220, 100, "white", "no", "كرتون (تركيب) أبيض (D14)"],
+            ["D14", 290, 220, 100, "brown", "no", "كرتون (تركيب) بني (D14)"],
+            ["D15", 374, 228, 148, "white", "no", "كرتون (تركيب) شنطة أبيض (D15)"],
+            ["D16", 374, 228, 148, "brown", "no", "كرتون (تركيب) شنطة بنى (D16)"],
+            ["D16", 374, 228, 148, "black", "no", "كرتون (تركيب) شنطة أسود (D16)"],
+            ["D17", 250, 250, 230, "brown", "no", "كرتون (تركيب) شنطة بنى (D17)"],
+            ["D18", 371, 288, 97, "brown", "no", "كرتون (تركيب) بنى (D18)"],
+            ["D19", 267, 200, 88, "brown", "no", "كرتون (تركيب) بنى (D19)"],
+            ["D20", 270, 200, 120, "black", "no", "كرتون (تركيب) أسود (D20)"],
+            ["D21", 500, 350, 200, "brown", "no", "كرتون (تركيب) شنطة بنى (D21)"],
+            ["D22", 215, 165, 110, "brown", "no", "كرتون تركيب بني خارجى ازرق داخلى  (D22)"],
+            ["D23", 235, 190, 110, "brown", "no", "كرتون (تركيب) شنطة بنى (D23)"],
+            ["D24", 302, 180, 120, "brown", "no", "كرتون (تركيب) شنطة بنى (D24)"],
+            ["D25", 285, 196, 115, "white", "no", "كرتون تركيب ابيض مطبوع (D25)"],
+            ["D26", 300, 150, 35, "brown", "no", "كرتون فطاير بنى سادة (D26)"],
+            ["D27", 220, 93, 80, "brown", "no", "T401  (D27)"],
+            ["D28", 380, 290, 140, "brown", "no", "كرتون تركيب مطبوع D28"],
+            ["D29", 230, 100, 50, "white", "no", "كرتون تركيب ابيض D29"],
+            ["D30", 300, 230, 140, "pink", "no", "كرتون تركيب وردى D30"],
+            ["D31", 380, 290, 140, "white", "no", "كرتون تركيب ابيض D31"],
+            ["D33", 250, 200, 130, "green", "no", "كرتون مريم D33 Dark green"],
+            ["D34", 215, 165, 110, "blue", "no", "كرتون تركيب ازرق خارجى بنى سادة داخلى D34"],
+            ["D35", 270, 180, 65, "purple", "no", "كرتون بنفسجى فاتح D35 (كرتون منيرة)"],
+            ["D36", 270, 200, 120, "black", "no", "كرتون تركيب اسود خارجى ابيض داخلى D36"],
+            ["D37", 267, 200, 88, "green", "no", "كرتون تركيب زيتى فاتح خارجى نود فاتح داخلى D37"],
+            ["D38", 270, 180, 65, "green", "no", "كرتون تركيب زيتى خارجى ليمونى اصفر داخلى D38"],
+            ["D40", 180, 175, 45, "red", "no", "كرتون تركيب احمر ( ود ) D40"],
+            ["D41", 267, 200, 88, "white", "no", "كرتون تركيب ابيض D41"],
+            ["D42", 371, 288, 97, "brown", "no", "كرتون تركيب بنى D42"],
+            ["D43", 215, 165, 110, "green", "no", "كرتون تركيب أخضر أبيض مقاس ( D22 ) D43"],
+            ["D44", 250, 200, 130, "green", "no", "كرتون تركيب أخضر أبيض مقاس ( D33 ) D44"],
+            ["D45", 371, 288, 97, "green", "no", "كرتون تركيب أخضر خارجي أبيض داخلي مقاس (D18 ) D45"],
+            ["D46", 371, 288, 97, "yellow", "no", "كرتون أصفر مطبوع مقاس D18 (D46)"],
+            ["D47", 267, 200, 88, "yellow", "no", "كرتون أصفر مطبوع مقاس (D19) D47"],
+            ["D48", 360, 220, 230, "brown", "no", "كرتون تركيب بني شنطة (D48)"],
+            ["D49", 100, 288, 280, "black", "no", "كرتون تركيب أسود (D49)"],
+            ["D50", 350, 350, 100, "brown", "no", "كرتون ثماني كبير كرافت  (D50)"],
+            ["D51", 26, 25, 10, "blue", "no", "كرتون ثماني 2 لون صغير  (D51)"],
+            ["D52", 350, 350, 100, "white", "no", "كرتون ثماني كبير  HG ابيض  (D52)"],
+            ["D53", 260, 260, 100, "brown", "no", "كرتون ثماني صغير  كرافت ( D53 )  بني"],
+            ["D54", 270, 180, 65, "pink", "no", "كرتون  (D54)  وردي"],
+            ["D55", 100, 288, 280, "green", "no", "كرتون تركيب  اليوم الوطني (d55)"],
+            ["D56", 295, 220, 100, "red", "no", "كرتون  تركيب  ندي (D56) احمر"],
+            ["D57", 267, 200, 88, "purple", "no", "كرتون تركيب (D57)  موف"],
+            ["D58", 220, 220, 80, "brown", "no", "كرتون تركيب  مربع  (D58)"],
+            ["D59", 180, 175, 45, "brown", "no", "كرتون تركيب (D59) بني كرافت"],
+            ["D60", 290, 220, 100, "blue", "no", "كرتون تركيب كحلي خارجي بيج داخلي  (D60)"],
+            ["D61", 290, 220, 100, "gray", "no", "كرتون  رصاصي خارجي كحلي داخلي  D61  (كرتون راكان )"],
+            ["D62", 371, 288, 97, "black", "no", "كرتون تركيب اسود خارجي اسود داخلي (D62 )"],
+            ["D63", 267, 200, 88, "pink", "no", "كرتون تركيب  (D63) وردي"],
+            ["D64", 400, 300, 60, "brown", "no", "كرتون  تركيب (D64)"],
+            ["T1", 520, 215, 325, "green", "no", "T1"],
+            ["T2", 720, 470, 230, "brown", "no", "T2"],
+            ["T3", 220, 200, 450, "brown", "no", "T3"],
+            ["T4", 210, 205, 270, "brown", "no", "T4"],
+            ["T5", 400, 300, 125, "white", "thick", "سميك T5"],
+            ["T6", 200, 200, 40, "brown", "no", "T6 أبيض"],
+            ["T559", 270, 180, 65, "white", "no", "كرتون عام الابل صغير T559"],
+            ["T560", 295, 220, 100, "brown", "no", "كرتون عام الابل وسط T560"],
+            ["T561", 371, 288, 97, "brown", "no", "كرتون عام الابل كبير T561"],
         ];
         let boxes = [];
         let lastMatches = [];
@@ -549,16 +773,22 @@
                 noSearch: "No search yet.",
                 noValidBoxes: "No valid boxes found in embedded data.",
                 noMatches: "No matches found.",
-                rank: "Rank",
                 id: "ID",
                 thHeight: "Height",
                 thWidth: "Width",
                 thLength: "Length",
+                thColor: "Color",
                 matchScore: "Match Score",
                 resultsHint: "Lower match score means a better fit. Box orientation is ignored.",
                 invalidInput: "Enter valid positive numbers for height, width, and length.",
                 noBoxesLoaded: "No boxes loaded. Please check embedded data.",
                 totalBoxesLabel: "Total boxes",
+                colorBrown: "Brown",
+                colorWhite: "White",
+                colorBlack: "Black",
+                thickBadge: "THICK",
+                thickIcon: "▦",
+                infoIconLabel: "Box description",
                 unitCm: "cm",
                 unitMm: "mm",
                 unitSelector: "Units",
@@ -581,16 +811,22 @@
                 noSearch: "لم يتم إجراء بحث بعد.",
                 noValidBoxes: "لا توجد كراتين صالحة في البيانات المضمنة.",
                 noMatches: "لا توجد نتائج مطابقة.",
-                rank: "الترتيب",
                 id: "رقم الكرتون",
                 thHeight: "الارتفاع",
                 thWidth: "العرض",
                 thLength: "الطول",
+                thColor: "اللون",
                 matchScore: "درجة التطابق",
                 resultsHint: "كلما انخفضت درجة التطابق كان القياس أفضل. لا يهم اتجاه الكرتون.",
                 invalidInput: "أدخل أرقامًا موجبة وصحيحة للارتفاع والعرض والطول.",
                 noBoxesLoaded: "لم يتم تحميل أي كراتين. يرجى التحقق من البيانات المضمنة.",
                 totalBoxesLabel: "إجمالي الكراتين",
+                colorBrown: "بني",
+                colorWhite: "أبيض",
+                colorBlack: "أسود",
+                thickBadge: "سميك",
+                thickIcon: "▦",
+                infoIconLabel: "وصف الكرتون",
                 unitCm: "سم",
                 unitMm: "مم",
                 unitSelector: "الوحدات",
@@ -638,6 +874,66 @@
 
         function formatPlaceholderValue(valueMm) {
             return formatSize(valueMm);
+        }
+
+        function normalizeBoxColors(rawColors) {
+            const allowedColors = ["brown", "white", "black", "blue", "green", "red", "pink", "purple", "yellow", "gray"];
+            if (Array.isArray(rawColors)) {
+                return [...new Set(rawColors
+                    .map((color) => String(color).trim().toLowerCase())
+                    .filter((color) => allowedColors.includes(color)))];
+            }
+            if (typeof rawColors === "string") {
+                return [...new Set(rawColors
+                    .split(/[\s,|/]+/)
+                    .map((color) => color.trim().toLowerCase())
+                    .filter((color) => allowedColors.includes(color)))];
+            }
+            return [];
+        }
+
+        function normalizeThickness(rawThickness) {
+            return String(rawThickness || "").trim().toLowerCase() === "thick";
+        }
+
+        function normalizeDescription(rawDescription) {
+            const value = String(rawDescription || "").trim();
+            return value;
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+        function colorLabel(color) {
+            if (color === "brown") return t("colorBrown");
+            if (color === "black") return t("colorBlack");
+            if (color === "blue") return currentLang === "ar" ? "أزرق" : "Blue";
+            if (color === "green") return currentLang === "ar" ? "أخضر" : "Green";
+            if (color === "red") return currentLang === "ar" ? "أحمر" : "Red";
+            if (color === "pink") return currentLang === "ar" ? "وردي" : "Pink";
+            if (color === "purple") return currentLang === "ar" ? "بنفسجي" : "Purple";
+            if (color === "yellow") return currentLang === "ar" ? "أصفر" : "Yellow";
+            if (color === "gray") return currentLang === "ar" ? "رمادي" : "Gray";
+            return t("colorWhite");
+        }
+
+        function renderColorDots(colors) {
+            if (!Array.isArray(colors) || colors.length === 0) return "";
+            return `<div class="color-dots">${colors.map((color) => `<span class="color-dot ${color}" title="${colorLabel(color)}" aria-label="${colorLabel(color)}"></span>`).join("")}</div>`;
+        }
+
+        function renderIdCell(box) {
+            const thickBadgeHtml = box.isThick ? `<span class="thick-badge">${t("thickIcon")} ${t("thickBadge")}</span>` : "";
+            const infoIconHtml = box.description
+                ? `<span class="info-wrap"><span class="info-dot" tabindex="0" aria-label="${t("infoIconLabel")}">i</span><span class="info-tooltip">${escapeHtml(box.description)}</span></span>`
+                : "";
+            return `<div class="id-cell"><span>${box.id}</span>${thickBadgeHtml}${infoIconHtml}</div>`;
         }
 
         function applyLanguage(rerender = true) {
@@ -715,15 +1011,17 @@
                                 <th>${dimensionLabel("thLength")}</th>
                                 <th>${dimensionLabel("thWidth")}</th>
                                 <th>${dimensionLabel("thHeight")}</th>
+                                <th class="colors-cell">${t("thColor")}</th>
                             </tr>
                         </thead>
                         <tbody>
                             ${pageRows.map((box) => `
                                 <tr>
-                                    <td>${box.id}</td>
+                                    <td>${renderIdCell(box)}</td>
                                     <td>${formatSize(box.length)}</td>
                                     <td>${formatSize(box.width)}</td>
                                     <td>${formatSize(box.height)}</td>
+                                    <td class="colors-cell">${renderColorDots(box.colors)}</td>
                                 </tr>
                             `).join("")}
                         </tbody>
@@ -749,22 +1047,22 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>${t("rank")}</th>
                                 <th>${t("id")}</th>
                                 <th>${dimensionLabel("thLength")}</th>
                                 <th>${dimensionLabel("thWidth")}</th>
                                 <th>${dimensionLabel("thHeight")}</th>
+                                <th class="colors-cell">${t("thColor")}</th>
                                 <th class="similarity-col">${t("matchScore")}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            ${matches.map((box, index) => `
+                            ${matches.map((box) => `
                                 <tr>
-                                    <td>#${index + 1}</td>
-                                    <td>${box.id}</td>
+                                    <td>${renderIdCell(box)}</td>
                                     <td>${formatSize(box.length)}</td>
                                     <td>${formatSize(box.width)}</td>
                                     <td>${formatSize(box.height)}</td>
+                                    <td class="colors-cell">${renderColorDots(box.colors)}</td>
                                     <td class="similarity-col">${box.match_score.toFixed(2)}</td>
                                 </tr>
                             `).join("")}
@@ -777,13 +1075,22 @@
 
         async function loadData() {
             boxes = EMBEDDED_BOXES
-                .filter((row) => Array.isArray(row) && row.length === 4)
-                .map(([id, height, width, length]) => ({ id, height, width, length }))
+                .filter((row) => Array.isArray(row) && row.length >= 4)
+                .map(([id, length, width, height, colors, thickness, description]) => ({
+                    id,
+                    length,
+                    width,
+                    height,
+                    colors: normalizeBoxColors(colors),
+                    isThick: normalizeThickness(thickness),
+                    description: normalizeDescription(description)
+                }))
                 .filter((box) =>
-                    [box.id, box.height, box.width, box.length].every((value) => Number.isFinite(value)) &&
+                    [box.height, box.width, box.length].every((value) => Number.isFinite(value)) &&
+                    String(box.id).trim().length > 0 &&
                     box.height > 0 && box.width > 0 && box.length > 0
                 )
-                .map((box, index) => ({ ...box, id: index + 1 }));
+                .sort((a, b) => String(a.id).localeCompare(String(b.id), undefined, { numeric: true, sensitivity: "base" }));
             allBoxesPage = 1;
             updateTotalBoxesCount();
             renderAllBoxes();
